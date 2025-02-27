@@ -32,7 +32,6 @@ trigger:
 
 # Using 'restart' and 'delay' mode to avoid missing rapid triggers
 mode: restart
-delay: '00:00:03'
 
 # Avoids reacting if the state has not actually changed
 condition:
@@ -60,4 +59,4 @@ action:
               entity_id: !input switch_2
           
   # Optional: Slight delay to prevent bouncing
-  - delay: '00:00:01'
+  - delay: '00:00:03'
