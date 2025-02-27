@@ -2,7 +2,8 @@ blueprint:
   name: Two-Way Switch Synchronization
   description: >
     ## Bind two switches together to operate in unison
-    **Version**: v1
+    
+    **Version**: v1.1
   domain: automation
   input:
     switch_1:
@@ -29,9 +30,10 @@ trigger:
       - 'on'
       - 'off'
 
-# Using 'queued' mode to avoid missing rapid triggers
-mode: queued
-max: 2
+# Using 'restart' and 'delay' mode to avoid missing rapid triggers
+mode: restart
+delay:
+  seconds: 3
 
 # Avoids reacting if the state has not actually changed
 condition:
