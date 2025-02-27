@@ -37,8 +37,8 @@ The **Two-Way Switch Synchronization** blueprint for Home Assistant allows you t
 
 ## 🛠️ Technical Details
 
-- **Mode:** `queued`
-- **Max Parallel Actions:** `2`
+- **Mode:** `restart`
+- **Delay:** `3s`
 - **Trigger:** State changes (`on` / `off`) of either switch.
 - **Condition:** Prevents state change if already synchronized.
 
