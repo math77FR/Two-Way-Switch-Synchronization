@@ -1,0 +1,62 @@
+blueprint:
+  name: Two-Way Switch Synchronization
+  description: >
+    ## Bind two switches together to operate in unison
+    **Version**: v1.3
+  domain: automation
+  input:
+    switch_1:
+      name: Switch 1
+      selector:
+        entity:
+          domain: switch
+    switch_2:
+      name: Switch 2
+      selector:
+        entity:
+          domain: switch
+
+variables:
+  switch_1: !input switch_1
+  switch_2: !input switch_2
+
+trigger:
+  - platform: state
+    entity_id: 
+      - !input switch_1
+      - !input switch_2
+    to:
+      - 'on'
+      - 'off'
+
+# Using 'queued' mode to avoid missing rapid triggers
+mode: queued
+max: 2
+
+# Avoids reacting if the state has not actually changed
+condition:
+  '{{ trigger.to_state.state != trigger.from_state.state }}'
+
+action:
+  # Synchronization from Switch 1 to Switch 2
+  - choose:
+      - conditions:
+          - '{{ trigger.entity_id != switch_1 }}'
+          - '{{ trigger.to_state.state != states(switch_1) }}'
+        sequence:
+          - service: 'switch.turn_{{ trigger.to_state.state }}'
+            target:
+              entity_id: !input switch_1
+
+  # Synchronization from Switch 2 to Switch 1
+  - choose:
+      - conditions:
+          - '{{ trigger.entity_id != switch_2 }}'
+          - '{{ trigger.to_state.state != states(switch_2) }}'
+        sequence:
+          - service: 'switch.turn_{{ trigger.to_state.state }}'
+            target:
+              entity_id: !input switch_2
+          
+  # Optional: Slight delay to prevent bouncing
+  - delay: '00:00:01'
