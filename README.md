@@ -5,17 +5,15 @@
 
 The **Two-Way Switch Synchronization** blueprint for Home Assistant allows you to synchronize two switches so they always operate in unison. When one switch is turned on or off, the other switch will automatically mirror the action, ensuring seamless synchronization between both switches.
 
----
 
 ## 🚀 Features
 
 - **Bidirectional Synchronization:** Both switches stay in sync regardless of which one is toggled.
 - **Loop Prevention:** Built-in conditions to avoid infinite loops or unnecessary state changes.
-- **Queue Mode:** Handles rapid state changes smoothly using `queued` mode.
-- **Optional Delay:** A slight delay to avoid bouncing issues.
+- **Restart Mode:** Handles rapid state changes smoothly using `restart` mode.
+- **Delay 3s:** A slight delay to avoid bouncing issues.
 - **Simple Configuration:** Easily set up through Home Assistant's UI.
 
----
 
 ## 📦 Installation
 
@@ -24,7 +22,6 @@ The **Two-Way Switch Synchronization** blueprint for Home Assistant allows you t
 3. Paste the raw GitHub URL of the blueprint or upload the `.yaml` file directly.
 4. Follow the setup instructions in the Home Assistant UI.
 
----
 
 ## ⚙️ Configuration
 
@@ -37,7 +34,6 @@ The **Two-Way Switch Synchronization** blueprint for Home Assistant allows you t
 - Synchronize a physical wall switch with a smart switch to control the same light or device.
 - Mirror the state of two smart switches to simplify control of multi-zone lighting or devices.
 
----
 
 ## 🛠️ Technical Details
 
@@ -46,7 +42,6 @@ The **Two-Way Switch Synchronization** blueprint for Home Assistant allows you t
 - **Trigger:** State changes (`on` / `off`) of either switch.
 - **Condition:** Prevents state change if already synchronized.
 
----
 
 ## 📄 License
 
