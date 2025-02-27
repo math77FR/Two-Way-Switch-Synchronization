@@ -2,7 +2,7 @@ blueprint:
   name: Two-Way Switch Synchronization
   description: >
     ## Bind two switches together to operate in unison
-    **Version**: v1.3
+    **Version**: v1
   domain: automation
   input:
     switch_1:
