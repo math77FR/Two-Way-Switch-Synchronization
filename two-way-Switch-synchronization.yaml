@@ -30,7 +30,7 @@ trigger:
       - 'on'
       - 'off'
 
-# Using 'restart' and 'delay' mode to avoid missing rapid triggers
+# Using 'restart' mode to avoid missing rapid triggers
 mode: restart
 
 # Avoids reacting if the state has not actually changed
